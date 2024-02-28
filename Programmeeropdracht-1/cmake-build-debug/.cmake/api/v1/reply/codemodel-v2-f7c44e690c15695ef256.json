@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/Family/Documents/GitHub/TA-programmeropdracht1/cmake-build-debug",
-		"source" : "C:/Users/Family/Documents/GitHub/TA-programmeropdracht1"
+		"build" : "C:/Users/32465/Documents/GitHub/TA/Programmeeropdracht-1/cmake-build-debug",
+		"source" : "C:/Users/32465/Documents/GitHub/TA/Programmeeropdracht-1"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 5
+		"minor" : 6
 	}
 }
