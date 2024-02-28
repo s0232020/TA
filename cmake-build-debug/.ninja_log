@@ -1,0 +1,11 @@
+# ninja log v5
+9	478	7307478086437077	build.ninja	28675ba98ba8a2fd
+197	386	7307477211202234	TA_programmeropdracht1.exe	3340e70775937966
+1	195	7307477209397924	CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj	1054df78a133609e
+3	396	7307478086437077	build.ninja	28675ba98ba8a2fd
+1	2579	7307493840700823	CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj	1054df78a133609e
+2582	3036	7307493845230769	TA_programmeropdracht1.exe	3340e70775937966
+5	1888	7308316400393024	CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj	1054df78a133609e
+1889	2188	7308316403362257	TA_programmeropdracht1.exe	3340e70775937966
+3	968	7308322954159053	CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj	1054df78a133609e
+968	1293	7308322957386004	TA_programmeropdracht1.exe	3340e70775937966
