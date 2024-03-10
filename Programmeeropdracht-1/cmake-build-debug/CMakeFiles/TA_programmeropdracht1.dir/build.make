@@ -52,10 +52,17 @@ RM = "C:\Program Files\JetBrains\CLion 2023.3.2\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< Updated upstream:Programmeeropdracht-1/cmake-build-debug/CMakeFiles/TA_programmeropdracht1.dir/build.make
 CMAKE_SOURCE_DIR = C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1\cmake-build-debug
+=======
+CMAKE_SOURCE_DIR = C:\Users\32465\Documents\GitHub\TA-programmeropdracht1
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\cmake-build-debug
+>>>>>>> Stashed changes:cmake-build-debug/CMakeFiles/TA_programmeropdracht1.dir/build.make
 
 # Include any dependencies generated for this target.
 include CMakeFiles/TA_programmeropdracht1.dir/depend.make
@@ -69,6 +76,7 @@ include CMakeFiles/TA_programmeropdracht1.dir/progress.make
 include CMakeFiles/TA_programmeropdracht1.dir/flags.make
 
 CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj: CMakeFiles/TA_programmeropdracht1.dir/flags.make
+<<<<<<< Updated upstream:Programmeeropdracht-1/cmake-build-debug/CMakeFiles/TA_programmeropdracht1.dir/build.make
 CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj: C:/Users/32465/Documents/GitHub/TA/Programmeeropdracht-1/DFA.cpp
 CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj: CMakeFiles/TA_programmeropdracht1.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj"
@@ -81,6 +89,20 @@ CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.i: cmake_force
 CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.s"
 	"C:\PROGRA~1\JetBrains\CLion 2023.3.2\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1\DFA.cpp -o CMakeFiles\TA_programmeropdracht1.dir\DFA.cpp.s
+=======
+CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj: C:/Users/32465/Documents/GitHub/TA-programmeropdracht1/DFA.cpp
+CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj: CMakeFiles/TA_programmeropdracht1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj"
+	"C:\PROGRA~1\JetBrains\CLion 2023.3.2\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj -MF CMakeFiles\TA_programmeropdracht1.dir\DFA.cpp.obj.d -o CMakeFiles\TA_programmeropdracht1.dir\DFA.cpp.obj -c C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\DFA.cpp
+
+CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.i"
+	"C:\PROGRA~1\JetBrains\CLion 2023.3.2\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\DFA.cpp > CMakeFiles\TA_programmeropdracht1.dir\DFA.cpp.i
+
+CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.s"
+	"C:\PROGRA~1\JetBrains\CLion 2023.3.2\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\DFA.cpp -o CMakeFiles\TA_programmeropdracht1.dir\DFA.cpp.s
+>>>>>>> Stashed changes:cmake-build-debug/CMakeFiles/TA_programmeropdracht1.dir/build.make
 
 # Object files for target TA_programmeropdracht1
 TA_programmeropdracht1_OBJECTS = \
@@ -94,7 +116,11 @@ TA_programmeropdracht1.exe: CMakeFiles/TA_programmeropdracht1.dir/build.make
 TA_programmeropdracht1.exe: CMakeFiles/TA_programmeropdracht1.dir/linkLibs.rsp
 TA_programmeropdracht1.exe: CMakeFiles/TA_programmeropdracht1.dir/objects1.rsp
 TA_programmeropdracht1.exe: CMakeFiles/TA_programmeropdracht1.dir/link.txt
+<<<<<<< Updated upstream:Programmeeropdracht-1/cmake-build-debug/CMakeFiles/TA_programmeropdracht1.dir/build.make
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable TA_programmeropdracht1.exe"
+=======
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable TA_programmeropdracht1.exe"
+>>>>>>> Stashed changes:cmake-build-debug/CMakeFiles/TA_programmeropdracht1.dir/build.make
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\TA_programmeropdracht1.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -106,6 +132,10 @@ CMakeFiles/TA_programmeropdracht1.dir/clean:
 .PHONY : CMakeFiles/TA_programmeropdracht1.dir/clean
 
 CMakeFiles/TA_programmeropdracht1.dir/depend:
+<<<<<<< Updated upstream:Programmeeropdracht-1/cmake-build-debug/CMakeFiles/TA_programmeropdracht1.dir/build.make
 	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1 C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1 C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1\cmake-build-debug C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1\cmake-build-debug C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1\cmake-build-debug\CMakeFiles\TA_programmeropdracht1.dir\DependInfo.cmake "--color=$(COLOR)"
+=======
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\32465\Documents\GitHub\TA-programmeropdracht1 C:\Users\32465\Documents\GitHub\TA-programmeropdracht1 C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\cmake-build-debug C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\cmake-build-debug C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\cmake-build-debug\CMakeFiles\TA_programmeropdracht1.dir\DependInfo.cmake "--color=$(COLOR)"
+>>>>>>> Stashed changes:cmake-build-debug/CMakeFiles/TA_programmeropdracht1.dir/build.make
 .PHONY : CMakeFiles/TA_programmeropdracht1.dir/depend
 

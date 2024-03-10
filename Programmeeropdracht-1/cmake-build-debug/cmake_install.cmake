@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream:Programmeeropdracht-1/cmake-build-debug/cmake_install.cmake
 # Install script for directory: C:/Users/32465/Documents/GitHub/TA/Programmeeropdracht-1
+=======
+# Install script for directory: C:/Users/32465/Documents/GitHub/TA-programmeropdracht1
+>>>>>>> Stashed changes:cmake-build-debug/cmake_install.cmake
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +49,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< Updated upstream:Programmeeropdracht-1/cmake-build-debug/cmake_install.cmake
 file(WRITE "C:/Users/32465/Documents/GitHub/TA/Programmeeropdracht-1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "C:/Users/32465/Documents/GitHub/TA-programmeropdracht1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> Stashed changes:cmake-build-debug/cmake_install.cmake
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

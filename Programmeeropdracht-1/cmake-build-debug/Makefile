@@ -56,10 +56,17 @@ RM = "C:\Program Files\JetBrains\CLion 2023.3.2\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< Updated upstream:Programmeeropdracht-1/cmake-build-debug/Makefile
 CMAKE_SOURCE_DIR = C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1\cmake-build-debug
+=======
+CMAKE_SOURCE_DIR = C:\Users\32465\Documents\GitHub\TA-programmeropdracht1
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\cmake-build-debug
+>>>>>>> Stashed changes:cmake-build-debug/Makefile
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +93,15 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
+<<<<<<< Updated upstream:Programmeeropdracht-1/cmake-build-debug/Makefile
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1\cmake-build-debug\CMakeFiles C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\32465\Documents\GitHub\TA\Programmeeropdracht-1\cmake-build-debug\CMakeFiles 0
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\cmake-build-debug\CMakeFiles C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\cmake-build-debug\\CMakeFiles\progress.marks
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\32465\Documents\GitHub\TA-programmeropdracht1\cmake-build-debug\CMakeFiles 0
+>>>>>>> Stashed changes:cmake-build-debug/Makefile
 .PHONY : all
 
 # The main clean target

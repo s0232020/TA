@@ -8,7 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+<<<<<<< Updated upstream:Programmeeropdracht-1/cmake-build-debug/CMakeFiles/TA_programmeropdracht1.dir/DependInfo.cmake
   "C:/Users/32465/Documents/GitHub/TA/Programmeeropdracht-1/DFA.cpp" "CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj" "gcc" "CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj.d"
+=======
+  "C:/Users/32465/Documents/GitHub/TA-programmeropdracht1/DFA.cpp" "CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj" "gcc" "CMakeFiles/TA_programmeropdracht1.dir/DFA.cpp.obj.d"
+>>>>>>> Stashed changes:cmake-build-debug/CMakeFiles/TA_programmeropdracht1.dir/DependInfo.cmake
   )
 
 # Targets to which this target links which contain Fortran sources.
