@@ -8,75 +8,58 @@
 #include <fstream>
 #include <iomanip>
 #include "json.hpp"
-using namespace std;
+#include <string>
 using json = nlohmann::json;
 
 class DFA {
 public:
-    DFA() {
-// Initialiseer de toestanden
-        states.push_back("q0");
-        states.push_back("q1");
-        states.push_back("q2");
 
-// Initialiseer de overgangen
-        transitions[0]['0'] = 1;
-        transitions[0]['1'] = 2;
-        transitions[1]['0'] = 2;
-        transitions[1]['1'] = 0;
-        transitions[2]['0'] = 1;
-        transitions[2]['1'] = 2;
-
-// Initialiseer de acceptatiestaten
-        accepting_states.insert("q2");
-    }
-
-    DFA(string FileName){
+    DFA(std::string FileName){
         // Open the file
-        ifstream input(FileName);
+        std::ifstream input(FileName);
         if(!input.is_open()){
             // Error handling
-            throw runtime_error("File name not found");
-            return;
+            throw std::runtime_error("File name not found");
         }
 
         // Parse the JSON data
         json j;
-        input >> j;
-        if (!j.is_discarded()){
-            // Error handling
-            throw runtime_error("Failed to parse JSON data from file");
-            return;
+        if (!(input >> j)){
+            throw std::runtime_error("Failed to parse JSON data from file");
         }
 
-        if(j["type"] = "DFA"){
-            alphabet = j["alphabet"].get<vector<char>>();
-            for(auto& states:j["states"]){
-                if(j["starting"] = true){
-                    string starting_state = j["name"];
+        if(j["type"] == "DFA"){
+            alphabet = j["alphabet"].get<std::vector<std::string>>();
+            for(auto& state:j["states"]){
+                std::string state_name = state["name"];
+                if(state["starting"] == true){
+                    starting_states.emplace(state_name);
                 }
-                else if(j["accepting"] = true) {
-                    string accepting_state = j["name"];
+                else if(state["accepting"] == true) {
+                    accepting_states.emplace(state_name);
                 }
             }
-            //cout << starting_states << accepting_states << endl;
+            for(auto& transition:j["transitions"]){
+                std::string transition_from = transition["from"];
+                std::string transition_to = transition["to"];
+                std::string transition_input = transition["input"];
+                transitions[transition_from][transition_input] = transition_to;
+            }
         }
-
-        // Close the file
         input.close();
 
     }
 
-    bool accepts(string input) {
-        string current_state;
+    bool accepts(std::string input) {
+        std::string current_state = *starting_states.begin();
         for (char c : input) {
 // Controleer of de overgang bestaat
-            if (transitions[current_state].find(c) == transitions[current_state].end()) {
+            if (transitions[current_state].count(std::string(1,c)) == 0) {
                 return false;
             }
 
             // Ga naar de volgende toestand
-            current_state = transitions[current_state][c];
+            current_state = transitions[current_state][std::string(1,c)];
         }
 
 // Controleer of de huidige toestand een acceptatiestaat is
@@ -85,11 +68,11 @@ public:
 
 private:
 
-    vector<string> states;
-    vector<char> alphabet;
-    unordered_map<long, unordered_map<char, long>> transitions;
-    unordered_set<string> accepting_states;
-    unordered_set<string> starting_states;
+    std::vector<std::string> states;
+    std::vector<std::string> alphabet;
+    std::unordered_map<std::string, std::unordered_map<std::string, std::string>> transitions;
+    std::unordered_set<std::string> accepting_states;
+    std::unordered_set<std::string> starting_states;
 };
 
 
