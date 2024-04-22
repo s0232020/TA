@@ -1,14 +1,11 @@
 #include "NFA.h"
+#include "DFA.h"
 
 int main() {
-    NFA nfa("input-ssc1.json");
-    //nfa.toDFA().print();
-    std::cout << nfa.accepts("c") << std::endl;
-    std::cout << nfa.accepts("cc") << std::endl;
-    std::cout << nfa.accepts("ccc") << std::endl;
-    std::cout << nfa.accepts("cccc") << std::endl;
-    std::cout << nfa.accepts("ccccc") << std::endl;
 
+    NFA nfa("input-ssc1.json");
+    nfa.toDFA().print();
+    std::cout << nfa.toDFA().accepts("c") << std::endl;
 
     return 0;
 }

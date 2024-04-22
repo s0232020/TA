@@ -15,7 +15,10 @@ using json = nlohmann::json;
 class DFA {
 public:
 
-    DFA(std::string FileName){
+    DFA() = default;
+
+    DFA(std::string FileName)
+    {
         // Open the file
         std::ifstream input(FileName);
         if(!input.is_open()){
@@ -32,7 +35,7 @@ public:
         if(j["type"] == "DFA"){
             alphabet = j["alphabet"].get<std::vector<std::string>>();
             for(const auto &state:j["states"]){
-                states.push_back(state["name"]);
+                states.insert(state["name"].get<std::string>());
                 std::string state_name = state["name"];
                 if(state["starting"] == true){
                     starting_states.emplace(state_name);
@@ -109,10 +112,11 @@ public:
         std::cout << std::setw(4) << j << std::endl;
     }
 
+friend class NFA;
 
 private:
 
-    std::vector<std::string> states;
+    std::unordered_set<std::string> states;
     std::vector<std::string> alphabet;
     std::unordered_map<std::string, std::unordered_map<std::string, std::string>> transitions;
     std::unordered_set<std::string> accepting_states;
