@@ -35,10 +35,11 @@ public:
         if(j["type"] == "DFA"){
             alphabet = j["alphabet"].get<std::vector<std::string>>();
             for(const auto &state:j["states"]){
-                states.insert(state["name"].get<std::string>());
+                states.emplace_back(state["name"]);
                 std::string state_name = state["name"];
-                if(state["starting"] == true){
-                    starting_states.emplace(state_name);
+                if(state["starting"] == true)
+                {
+                    starting_state = state_name;
                 }
                 else if(state["accepting"] == true) {
                     accepting_states.emplace(state_name);
@@ -56,7 +57,7 @@ public:
     }
 
     bool accepts(std::string input) {
-        std::string current_state = *starting_states.begin();
+        std::string current_state = starting_state;
         for (char c : input) {
 // Controleer of de overgang bestaat
             if (transitions[current_state].count(std::string(1,c)) == 0) {
@@ -81,7 +82,7 @@ public:
             json state_json;
             state_json["name"] = state;
             state_json["accepting"] = accepting_states.count(state) != 0;
-            state_json["starting"] = starting_states.count(state) != 0;
+            state_json["starting"] = starting_state.find(state) == 0;
             states_json.push_back(state_json);
         }
 
@@ -116,11 +117,11 @@ friend class NFA;
 
 private:
 
-    std::unordered_set<std::string> states;
+    std::vector<std::string> states;
     std::vector<std::string> alphabet;
-    std::unordered_map<std::string, std::unordered_map<std::string, std::string>> transitions;
+    std::map<std::string, std::map<std::string, std::string>> transitions;
     std::unordered_set<std::string> accepting_states;
-    std::unordered_set<std::string> starting_states;
+    std::string starting_state;
 };
 
 

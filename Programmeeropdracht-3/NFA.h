@@ -37,11 +37,11 @@ public:
             alphabet = j["alphabet"].get<std::vector<std::string>>();
             for(const auto &state:j["states"])
             {
-                states.insert(state["name"].get<std::string>());
+                states.emplace_back(state["name"]);
                 std::string state_name = state["name"];
                 if(state["starting"] == true)
                 {
-                    starting_state.insert(state_name);
+                    starting_state = state_name;
                 }
                 else if(state["accepting"] == true)
                 {
@@ -60,89 +60,110 @@ public:
     }
 
     DFA toDFA() {
+        // Create a new DFA object
         DFA dfa;
+
+        // Copy the alphabet from the NFA to the DFA
         dfa.alphabet = alphabet;
-        dfa.starting_states = starting_state;
-        for (auto &state : accepting_states)
-        {
-            dfa.accepting_states.insert(state);
-        }
-        for (auto& state : states)
-        {
-            dfa.states.insert(state);
+
+        // Initialize a queue to hold the new states of the DFA
+        std::queue<std::unordered_set<std::string>> newStatesQueue;
+
+        // Add the starting state of the NFA to the queue
+        newStatesQueue.push(std::unordered_set<std::string>{starting_state});
+
+        // While there are still new states to process
+        while (!newStatesQueue.empty()) {
+            // Get the next new state
+            std::unordered_set<std::string> newState = newStatesQueue.front();
+            newStatesQueue.pop();
+
+            // Convert the set of states to a string to use as the name of the new state in the DFA
+            std::string newStateName = setToString(newState);
+
+            // Convert the set of starting states to a string to use as the name of the starting state in the DFA
+            std::string startingStateName = setToString(std::unordered_set<std::string>{starting_state});
+            dfa.starting_state = startingStateName;
+
+            // Add the new state to the DFA
+            dfa.states.emplace_back(newStateName);
+
+            // If the new state contains an accepting state of the NFA, it is an accepting state of the DFA
+            for (const std::string& state : newState) {
+                if (accepting_states.find(state) != accepting_states.end()) {
+                    dfa.accepting_states.insert(newStateName);
+                    break;
+                }
+            }
+
+            // For each symbol in the alphabet
+            for (const std::string& symbol : alphabet) {
+                // Initialize a set to hold the states reachable from the new state on the symbol
+                std::unordered_set<std::string> reachableStates;
+
+                // For each state in the new state
+                for (const std::string& state : newState) {
+                    // If there is a transition on the symbol
+                    if (transitions[state].find(symbol) != transitions[state].end()) {
+                        // Add the states reachable from the state on the symbol to the set of reachable states
+                        const std::unordered_set<std::string>& nextStates = transitions[state][symbol];
+                        reachableStates.insert(nextStates.begin(), nextStates.end());
+                    }
+                }
+
+                // If there are any reachable states
+                if (!reachableStates.empty()) {
+                    // Convert the set of reachable states to a string to use as the name of the new state in the DFA
+                    std::string reachableStateName = setToString(reachableStates);
+
+                    // Add a transition in the DFA from the new state, on the symbol, to the new reachable state
+                    dfa.transitions[newStateName][symbol] = reachableStateName;
+
+                    // If the new reachable state is not already a state in the DFA
+                    if (std::find(dfa.states.begin(), dfa.states.end(), reachableStateName) == dfa.states.end()) {
+                        // Convert the set of reachable states to a sorted vector
+                        std::vector<std::string> reachableStatesVector(reachableStates.begin(), reachableStates.end());
+                        std::sort(reachableStatesVector.begin(), reachableStatesVector.end());
+
+                        // Convert the sorted vector back to a set and add it to the queue of new states
+                        std::unordered_set<std::string> sortedReachableStates(reachableStatesVector.begin(), reachableStatesVector.end());
+                        newStatesQueue.push(sortedReachableStates);
+                    }
+                }
+            }
         }
 
-//        std::queue<std::unordered_set<std::string>> queue;
-//        queue.push(starting_state);
-//
-//        while (!queue.empty())
-//        {
-//            std::unordered_set<std::string> current_state = queue.front();
-//            queue.pop();
-//
-//            for (const std::string& symbol : alphabet)
-//            {
-//                std::unordered_set<std::string> next_state;
-//                for (const std::string& state : current_state)
-//                {
-//                    if (transitions[state].find(symbol) != transitions[state].end())
-//                    {
-//                        next_state.insert(transitions[state][symbol].begin(), transitions[state][symbol].end());
-//                    }
-//                }
-//
-//                bool all_states_exist = true;
-//                for (const auto& state : next_state) {
-//                    if (dfa.states.find(state) == dfa.states.end()) {
-//                        all_states_exist = false;
-//                        break;
-//                    }
-//                }
-//
-//                if (all_states_exist)
-//                {
-//                    for (const auto& state : next_state) {
-//                        dfa.states.insert(state);
-//                    }
-//                    queue.push(next_state);
-//                }
-//
-//                for (const auto& state : current_state) {
-//                    for (const auto& next : next_state) {
-//                        dfa.transitions[state][symbol] = next;
-//                    }
-//                }
-//            }
-//        }
-//
-//        for (const auto& state : dfa.states)
-//        {
-//            bool is_accepting = false;
-//            for (const std::string& accepting_state : accepting_states)
-//            {
-//                if (state.find(accepting_state) != std::string::npos)                {
-//                    is_accepting = true;
-//                    break;
-//                }
-//            }
-//            if (is_accepting)
-//            {
-//                dfa.accepting_states.insert(state);
-//            }
-//        }
-
+        // Return the constructed DFA
         return dfa;
+    }
+
+    std::string setToString(const std::unordered_set<std::string>& stateSet) {
+        // Convert the set to a vector
+        std::vector<std::string> stateVector(stateSet.begin(), stateSet.end());
+
+        // Sort the vector
+        std::sort(stateVector.begin(), stateVector.end());
+
+        // Convert the sorted vector to a string
+        std::string stateString = "{";
+        for (const std::string& state : stateVector) {
+            if (stateString.length() > 1) {
+                stateString += ",";
+            }
+            stateString += state;
+        }
+        stateString += "}";
+        return stateString;
     }
 
     bool accepts(std::string input)
     {
-        std::unordered_set<std::string> current_states = starting_state;
-
+        std::string current_states = starting_state;
         for (char c : input)
         {
             std::unordered_set<std::string> next_states;
 
-            for (const std::string& state : current_states)
+            for (const std::string& state : std::unordered_set<std::string>{current_states})
             {
                 if (transitions[state].find(std::string(1, c)) != transitions[state].end())
                 {
@@ -151,7 +172,7 @@ public:
                 }
             }
 
-            current_states = next_states;
+            current_states = *next_states.begin();
 
             if (current_states.empty())
             {
@@ -159,7 +180,7 @@ public:
             }
         }
 
-        for (const std::string& state : current_states)
+        for (const std::string& state : std::unordered_set<std::string>{current_states})
         {
             if (accepting_states.find(state) != accepting_states.end())
             {
@@ -171,11 +192,11 @@ public:
     }
 
 private:
-    std::unordered_set<std::string> states;
+    std::vector<std::string> states;
     std::vector<std::string> alphabet;
-    std::unordered_map<std::string, std::unordered_map<std::string, std::unordered_set<std::string>>> transitions;
+    std::map<std::string, std::map<std::string, std::unordered_set<std::string>>> transitions;
     std::unordered_set<std::string> accepting_states;
-    std::unordered_set<std::string> starting_state;
+    std::string starting_state;
 };
 
 #endif //PROGRAMMEEROPDRACHT_3_NFA_H

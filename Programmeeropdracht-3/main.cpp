@@ -3,9 +3,10 @@
 
 int main() {
 
-    NFA nfa("input-ssc1.json");
+    NFA nfa("input-ssc2.json");
     nfa.toDFA().print();
-    std::cout << nfa.toDFA().accepts("c") << std::endl;
+
+
 
     return 0;
 }
