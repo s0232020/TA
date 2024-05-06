@@ -9,4 +9,6 @@ add_executable(Programmeeropdracht_3
         DFA.h
         json.hpp
         main.cpp
+        SA.cpp
+        SA.h
 )

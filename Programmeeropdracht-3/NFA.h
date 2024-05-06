@@ -85,8 +85,11 @@ public:
             std::string startingStateName = setToString(std::unordered_set<std::string>{starting_state});
             dfa.starting_state = startingStateName;
 
-            // Add the new state to the DFA
-            dfa.states.emplace_back(newStateName);
+            // If the new state is not already a state in the DFA
+            if (std::find(dfa.states.begin(), dfa.states.end(), newStateName) == dfa.states.end()) {
+                // Add the new state to the DFA
+                dfa.states.emplace_back(newStateName);
+            }
 
             // If the new state contains an accepting state of the NFA, it is an accepting state of the DFA
             for (const std::string& state : newState) {
@@ -116,19 +119,14 @@ public:
                     // Convert the set of reachable states to a string to use as the name of the new state in the DFA
                     std::string reachableStateName = setToString(reachableStates);
 
-                    // Add a transition in the DFA from the new state, on the symbol, to the new reachable state
-                    dfa.transitions[newStateName][symbol] = reachableStateName;
-
                     // If the new reachable state is not already a state in the DFA
                     if (std::find(dfa.states.begin(), dfa.states.end(), reachableStateName) == dfa.states.end()) {
-                        // Convert the set of reachable states to a sorted vector
-                        std::vector<std::string> reachableStatesVector(reachableStates.begin(), reachableStates.end());
-                        std::sort(reachableStatesVector.begin(), reachableStatesVector.end());
-
-                        // Convert the sorted vector back to a set and add it to the queue of new states
-                        std::unordered_set<std::string> sortedReachableStates(reachableStatesVector.begin(), reachableStatesVector.end());
-                        newStatesQueue.push(sortedReachableStates);
+                        // Add the new reachable state to the queue of new states to process
+                        newStatesQueue.push(reachableStates);
                     }
+
+                    // Add a transition in the DFA from the new state, on the symbol, to the new reachable state
+                    dfa.transitions[newStateName][symbol] = reachableStateName;
                 }
             }
         }
@@ -136,6 +134,7 @@ public:
         // Return the constructed DFA
         return dfa;
     }
+
 
     std::string setToString(const std::unordered_set<std::string>& stateSet) {
         // Convert the set to a vector
