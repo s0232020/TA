@@ -1,3 +1,0 @@
-C:/Users/Family/Documents/GitHub/TA/Programmeeropdracht-3/cmake-build-debug/CMakeFiles/Programmeeropdracht_3.dir
-C:/Users/Family/Documents/GitHub/TA/Programmeeropdracht-3/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Family/Documents/GitHub/TA/Programmeeropdracht-3/cmake-build-debug/CMakeFiles/rebuild_cache.dir

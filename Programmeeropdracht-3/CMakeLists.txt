@@ -11,4 +11,6 @@ add_executable(Programmeeropdracht_3
         main.cpp
         SA.cpp
         SA.h
+        DFA.cpp
+        NFA.cpp
 )
